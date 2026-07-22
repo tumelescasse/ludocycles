@@ -17,7 +17,7 @@ export const Route = createFileRoute('/')({
 const whyUs = [
   {
     icon: Truck,
-    title: 'go  à domicile',
+    title: 'Intervention à domicile',
     body: "Un vélo qui grince ne se répare pas mieux au fond d'un garage. Ludo vient chez vous, avec l'outillage complet.",
   },
   {
