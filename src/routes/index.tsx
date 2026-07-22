@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import RepairEstimator from '@/components/RepairEstimator'
 import {
   Bike,
   Zap,
@@ -307,6 +308,8 @@ export default function LudoCyclesHome() {
           <p className="text-xs text-[var(--ink-soft)] mt-8">
             * Pièces facturées en supplément selon le remplacement nécessaire.
           </p>
+
+          <RepairEstimator />
         </div>
       </section>
 
