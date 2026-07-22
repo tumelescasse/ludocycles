@@ -1,4 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { PriceEstimator } from '@/components/PriceEstimator'
 import {
   Bike,
   Zap,
@@ -13,6 +14,18 @@ import {
 export const Route = createFileRoute('/')({
   component: LudoCyclesHome,
 })
+
+const FrenchFlag = ({ className = '' }: { className?: string }) => (
+  <span
+    className={`inline-flex overflow-hidden rounded-[2px] border border-[var(--ink)]/15 align-middle ${className}`}
+    style={{ width: 18, height: 12 }}
+    aria-hidden="true"
+  >
+    <span className="flex-1 bg-[#0055A4]" />
+    <span className="flex-1 bg-white" />
+    <span className="flex-1 bg-[#EF4135]" />
+  </span>
+)
 
 const whyUs = [
   {
@@ -44,6 +57,8 @@ const services = [
     body: "Révisions complètes, freins, transmission, roues, réglages fins et montage d'accessoires pour garder votre vélo en état de rouler longtemps.",
     cta: 'En savoir plus',
     accent: 'rust' as const,
+    to: '/' as const,
+    hash: 'tarifs',
   },
   {
     icon: Zap,
@@ -51,6 +66,8 @@ const services = [
     body: 'Transformez votre vélo en vélo électrique grâce aux kits Virvolt, installés et réglés par un professionnel certifié.',
     cta: 'Découvrir',
     accent: 'volt' as const,
+    to: '/virvolt' as const,
+    hash: undefined,
   },
 ]
 
@@ -133,9 +150,13 @@ export default function LudoCyclesHome() {
           <a href="#services" className="hover:text-[var(--rust)] transition-colors">
             Services
           </a>
-          <a href="#electrification" className="hover:text-[var(--rust)] transition-colors">
+          <Link
+            to="/virvolt"
+            className="inline-flex items-center gap-1.5 hover:text-[var(--rust)] transition-colors"
+          >
             Virvolt
-          </a>
+            <FrenchFlag />
+          </Link>
           <a href="#tarifs" className="hover:text-[var(--rust)] transition-colors">
             Tarifs
           </a>
@@ -220,15 +241,16 @@ export default function LudoCyclesHome() {
                     {service.body}
                   </p>
                 </div>
-                <a
-                  href="#contact"
+                <Link
+                  to={service.to}
+                  hash={service.hash}
                   className={`inline-flex items-center gap-2 mt-8 font-semibold group ${
                     isRust ? 'text-[var(--paper)]' : 'text-[var(--ink)]'
                   }`}
                 >
                   {service.cta}
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </article>
             )
           })}
@@ -307,6 +329,18 @@ export default function LudoCyclesHome() {
           <p className="text-xs text-[var(--ink-soft)] mt-8">
             * Pièces facturées en supplément selon le remplacement nécessaire.
           </p>
+
+          {/* Outil d'estimation interactif */}
+          <div className="mt-20 pt-16 border-t border-[var(--line)]">
+            <h3 className="font-display text-3xl md:text-4xl mb-4">
+              Estimez votre intervention
+            </h3>
+            <p className="text-[var(--ink-soft)] max-w-xl mb-12 leading-relaxed">
+              Dépliez les postes concernés, cochez les prestations souhaitées et
+              obtenez une estimation en temps réel avant de nous contacter.
+            </p>
+            <PriceEstimator />
+          </div>
         </div>
       </section>
 
@@ -381,7 +415,7 @@ export default function LudoCyclesHome() {
             <h3 className="font-display text-lg tracking-wide mb-4">Coordonnées</h3>
             <ul className="space-y-2 text-sm text-[var(--paper)]/70">
               <li>06.82.77.02.82</li>
-              <li>contact@ludocycles.fr</li>
+              <li>ludocycles@gmail.com</li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 Intervention dans un rayon de 25 km
@@ -393,7 +427,7 @@ export default function LudoCyclesHome() {
             <h3 className="font-display text-lg tracking-wide mb-4">Pages</h3>
             <ul className="space-y-2 text-sm text-[var(--paper)]/70">
               <li><a href="#services" className="hover:text-[var(--volt)] transition-colors">Services</a></li>
-              <li><a href="#electrification" className="hover:text-[var(--volt)] transition-colors">Électrification Virvolt</a></li>
+              <li><Link to="/virvolt" className="hover:text-[var(--volt)] transition-colors">Électrification Virvolt</Link></li>
               <li><a href="#tarifs" className="hover:text-[var(--volt)] transition-colors">Tarifs</a></li>
               <li><a href="#avis" className="hover:text-[var(--volt)] transition-colors">Avis clients</a></li>
               <li><a href="#contact" className="hover:text-[var(--volt)] transition-colors">Contact</a></li>
