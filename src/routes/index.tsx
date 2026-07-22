@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import {
   Bike,
   Zap,
@@ -9,6 +9,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from 'lucide-react'
+import { FrenchFlag } from '@/components/FrenchFlag'
 
 export const Route = createFileRoute('/')({
   component: LudoCyclesHome,
@@ -133,9 +134,13 @@ export default function LudoCyclesHome() {
           <a href="#services" className="hover:text-[var(--rust)] transition-colors">
             Services
           </a>
-          <a href="#electrification" className="hover:text-[var(--rust)] transition-colors">
+          <Link
+            to="/histoire-virvolt"
+            className="inline-flex items-center gap-1.5 hover:text-[var(--rust)] transition-colors"
+          >
             Virvolt
-          </a>
+            <FrenchFlag className="w-4 h-3 rounded-[1px] ring-1 ring-[var(--line)]" />
+          </Link>
           <a href="#tarifs" className="hover:text-[var(--rust)] transition-colors">
             Tarifs
           </a>
