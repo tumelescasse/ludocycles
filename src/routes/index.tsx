@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   Bike,
   Zap,
@@ -10,7 +9,6 @@ import {
   ArrowRight,
   CheckCircle2,
   Calculator,
-  ChevronDown,
 } from "lucide-react";
 import { RepairEstimator, type Prestation } from "@/components/RepairEstimator";
 import { FrenchFlag } from "@/components/FrenchFlag";
@@ -228,8 +226,6 @@ const reviews = [
 ];
 
 export default function LudoCyclesHome() {
-  const [tarifsOpen, setTarifsOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
       <a
@@ -401,40 +397,7 @@ export default function LudoCyclesHome() {
             la fin. Un devis détaillé et gratuit est toujours établi sur place.
           </p>
 
-          {/* Onglet déroulant : la grille et le calculateur */}
-          <button
-            type="button"
-            onClick={() => setTarifsOpen((open) => !open)}
-            aria-expanded={tarifsOpen}
-            aria-controls="tarifs-panel"
-            className={`w-full flex items-center justify-between gap-6 text-left rounded-2xl border px-6 md:px-8 py-6 cursor-pointer transition-colors ${
-              tarifsOpen
-                ? "border-[var(--ink)] bg-white"
-                : "border-[var(--line)] bg-white hover:border-[var(--ink)]/40"
-            }`}
-          >
-            <span>
-              <span className="block font-display text-2xl md:text-3xl tracking-wide">
-                Voir la grille des tarifs
-              </span>
-              <span className="block text-sm text-[var(--ink-soft)] mt-1">
-                Prestations à l&rsquo;unité et calcul du total de votre
-                réparation
-              </span>
-            </span>
-            <span className="flex items-center gap-3 shrink-0">
-              <span className="hidden sm:inline text-xs font-semibold uppercase tracking-[0.18em] text-[var(--rust)]">
-                {tarifsOpen ? "Replier" : "Dérouler"}
-              </span>
-              <span className="grid place-items-center w-10 h-10 rounded-full bg-[var(--ink)] text-[var(--paper)]">
-                <ChevronDown
-                  className={`w-5 h-5 transition-transform ${tarifsOpen ? "rotate-180" : ""}`}
-                />
-              </span>
-            </span>
-          </button>
-
-          <div id="tarifs-panel" hidden={!tarifsOpen} className="pt-14">
+          <div className="pt-6">
             <div className="grid md:grid-cols-3 gap-8">
               {pricing.map((plan) => {
                 const isFeatured = plan.featured;
