@@ -13,6 +13,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { RepairEstimator, type Prestation } from "@/components/RepairEstimator";
+import { FrenchFlag } from "@/components/FrenchFlag";
 
 export const Route = createFileRoute("/")({
   component: LudoCyclesHome,
@@ -260,9 +261,10 @@ export default function LudoCyclesHome() {
           </a>
           <a
             href="/virvolt"
-            className="hover:text-[var(--rust)] transition-colors"
+            className="inline-flex items-center gap-1.5 hover:text-[var(--rust)] transition-colors"
           >
             Virvolt
+            <FrenchFlag className="w-4 h-auto rounded-[2px] shadow-sm" />
           </a>
           <a
             href="#tarifs"
