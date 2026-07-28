@@ -30,6 +30,7 @@ const virvoltKits = [
     position: "front" as MotorPosition,
     positionLabel: "Moteur dans la roue avant",
     tagline: "Simple, léger, accessible",
+    price: "À partir de 569 € TTC",
     forWho:
       "Pour les petits trajets du quotidien et les parcours sans dénivelé : un simple coup de boost, pour un petit budget.",
     torque: 30,
@@ -46,6 +47,7 @@ const virvoltKits = [
     position: "rear" as MotorPosition,
     positionLabel: "Moteur dans la roue arrière",
     tagline: "Compact, léger, discret",
+    price: "À partir de 860 € TTC",
     forWho:
       "Pour les trajets quotidiens, les sorties route ou gravel et les terrains peu accidentés : une assistance douce et silencieuse.",
     torque: 40,
@@ -62,6 +64,7 @@ const virvoltKits = [
     position: "mid" as MotorPosition,
     positionLabel: "Moteur au pédalier",
     tagline: "Puissant, réparable, made in France",
+    price: "À partir de 1 250 € TTC",
     forWho:
       "Pour tous les usages, même exigeants : côtes, aventures off-road ou transport de charges lourdes. Réparable et modulaire à vie.",
     torque: 80,
@@ -274,12 +277,15 @@ export default function VirvoltPage() {
 
                     <h3 className="font-display text-3xl mb-1">{kit.name}</h3>
                     <p
-                      className="font-semibold text-sm mb-6"
+                      className="font-semibold text-sm mb-3"
                       style={{
                         color: isFeatured ? "var(--volt)" : accentColor,
                       }}
                     >
                       {kit.positionLabel}
+                    </p>
+                    <p className="font-display text-2xl tracking-wide mb-6">
+                      {kit.price}
                     </p>
 
                     <div
